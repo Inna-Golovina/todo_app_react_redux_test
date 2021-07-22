@@ -26,7 +26,7 @@ export const completeAllTodos = () => ({
 })
 
 export const clearCompleted = () => ({
-  type: types.CLEAR_COMPLEATED,
+  type: types.CLEAR_COMPLETED,
 })
 
 export const setVisibilityFilter = filter => ({
