@@ -10,7 +10,7 @@ import {
 const initialState = [
   {
     text: 'Use Redux',
-    comleted: false,
+    completed: false,
     id: 0
   }
 ]
@@ -22,6 +22,8 @@ export default function todos(state = initialState, action) {
         ...state,
         {
           id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
+          completed: false,
+          text: action.text
         }
       ]
 
@@ -54,11 +56,11 @@ export default function todos(state = initialState, action) {
         const areAllMarked = state.every(todo => todo.completed)
       return state.map(todo => ({
         ...todo,
-        comleted: !areAllMarked,
+        completed: !areAllMarked,
       }))
 
       case CLEAR_COMPLETED:
-        return state.filter(todo => todo.completed === false);
+        return state.filter(todo => todo.completed === false)
 
       default:
         return state;
